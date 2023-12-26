@@ -1,6 +1,6 @@
 package day1.part1
 
-import readLines
+import bootstrap.readLines
 import kotlin.math.abs
 
 private data class Vector2(val x: Int, val y: Int) {
