@@ -34,7 +34,7 @@ private fun getExits(seed: String, position: Vector2, path: String): List<Direct
 fun solve(seed: String): Int {
     var states = listOf(State(Vector2(0, 0), ""))
     val targetPosition = Vector2(3, 3)
-    val candidateLengths = mutableListOf<Int>()
+    var maxPathLength = -1
     while (states.isNotEmpty()) {
         val newStates = mutableListOf<State>()
         for ((position, path) in states) {
@@ -42,7 +42,7 @@ fun solve(seed: String): Int {
                 val newPosition = position + direction.vector
                 val newPath = path + direction.code
                 if (newPosition == targetPosition) {
-                    candidateLengths.add(newPath.length)
+                    maxPathLength = newPath.length
                 } else {
                     newStates.add(State(newPosition, newPath))
                 }
@@ -50,7 +50,7 @@ fun solve(seed: String): Int {
         }
         states = newStates
     }
-    return candidateLengths.max()
+    return maxPathLength
 }
 
 fun main() {
