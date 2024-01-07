@@ -38,7 +38,7 @@ fun solve(lines: List<String>): Int {
                 if (newEmptyTilePos.x !in xRange || newEmptyTilePos.y !in yRange) {
                     continue
                 }
-                // We can do this, because the nodes are mostly interchangeable, expect for some large filled nodes
+                // We can do this, because the nodes are mostly interchangeable, except for some large filled nodes
                 if (nodes[emptyTilePos]!!.size < nodes[newEmptyTilePos]!!.used) {
                     continue
                 }
