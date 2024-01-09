@@ -52,28 +52,14 @@ fun program(initA: Int, generateCount: Int): List<Int> {
     } while (true)
 }
 
-private const val maxN = 10_000_000
-
 fun solve(): Int {
     // need to find minimal a such as:
     // (a + 9 * 282) as binary is 101010(...)
-    for (a in 0..maxN) {
-        var n = a + 9 * 282
-        var expectedNextBit = 0
-        var match = true
-        while (n > 0) {
-            if ((n and 1) != expectedNextBit) {
-                match = false
-                break
-            }
-            n = n shr 1
-            expectedNextBit = 1 - expectedNextBit
-        }
-        if (match) {
-            return a
-        }
-    }
-    throw Exception("not found")
+    var n = 0
+    do {
+        n = n * 4 + 2 // 1010...10 -> 1010...1010
+    } while (n < 9 * 282)
+    return n - 9 * 282
 }
 
 fun main() {
